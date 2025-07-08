@@ -1,0 +1,83 @@
+<% layout("/layouts/boilarplate") %>
+
+<div class="container mt-4">
+  <div class="row mb-3">
+    <div class="col-8 offset-3">
+      <h3>Listing Details :</h3>
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <div class="card col-6 offset-3 show-card  border-0">
+      <img src="<%= listing.image %>" class="card-img-top show-img" alt="Images">
+      <div class="card-body">
+        <p class="card-text"> 
+         
+          <b><%= listing.title %></b><br>
+           <p>owen By: <i><%=listing.owner.username%></i> </p>
+          <%= listing.description %><br>
+          &#8377; <%= listing.price.toLocaleString("en-IN") %><br>
+          <%= listing.location %><br>
+          <%= listing.country %><br>
+        </p>
+      </div>
+    </div>
+  </div>
+    <% if (currUser && String(currUser._id) === String(listing.owner._id)) { %> 
+
+  <div class="row btns mb-5">
+    <div class="col-3 offset-3">
+      <a href="/listings/<%= listing._id %>/edit" ><button class="add " style="width: 5rem; border-radius:0.5rem ;">Edit</button></a>
+    </div>
+    <div class="col-3 offset-1">
+      <form method="POST" action="/listings/<%= listing._id %>?_method=DELETE">
+        <button class="btn btn-danger w-50">Delete</button>
+      </form>
+    </div>
+  </div> 
+ </div><%}%>
+ <div class="col-8 offset-3">
+  <hr>
+  <h4 class="mb-3">Leave a Review</h4>
+  
+  <form action="/listings/<%= listing._id %>/reviews" method="POST" class="needs-validation" novalidate>
+    
+    <!-- Rating with default and live preview -->
+    <div class="mb-4">
+      <label for="rating" class="form-label">Rating: <span id="rangeValue">3</span> ⭐</label>
+      <input 
+        type="range" 
+        class="form-range" 
+        id="rating" 
+        name="review[rating]" 
+        min="1" 
+        max="5" 
+        value="3"
+        oninput="document.getElementById('rangeValue').textContent = this.value"
+        required
+      >
+    </div>
+
+   
+    <div class="mb-4">
+      <label for="comment" class="form-label">Comments</label>
+      <textarea 
+        class="form-control" 
+        id="comment" 
+        name="review[comment]" 
+        rows="5" 
+        placeholder="Write your thoughts..." 
+        required
+      ></textarea>
+      <div class="invalid-feedback">
+        Please add a comment.
+      </div>
+    </div>
+
+    
+    <button type="submit" class="btn btn-outline-dark">Submit</button>
+  </form>
+
+  <hr/>
+</div>
+
