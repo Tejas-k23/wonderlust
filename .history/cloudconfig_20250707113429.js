@@ -1,8 +1,0 @@
-const cloudinary = require('cloudinary').v2;
-const { CloudinaryStorage } = require('multer-storage-cloudinary');
-
-if (process.env.NODE_ENV !== "Production") {
-  require("dotenv").config();
-}
-
-console.log(process.env.SECRET);
