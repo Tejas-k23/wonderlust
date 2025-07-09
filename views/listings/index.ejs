@@ -1,5 +1,8 @@
 <%layout("/layouts/boilarplate")%>
 <style>
+  
+
+
 #filter-toggle {
   display: flex;
   align-items: center;
@@ -11,13 +14,28 @@
   font-size: 16px;
 }
 
-/* Optional: Hide filters if switch is OFF */
+
 #filters.hidden {
   display: none;
 }
 .tax{
   display: none;
 }
+@media (max-width: 770px) {
+  #filter-toggle {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  #filter-toggle .form-check-input {
+    margin: 0;
+  }
+
+  #filter-toggle .form-check-label {
+    font-size: 14px;
+  }
+}
+
 </style>
 
   <body>

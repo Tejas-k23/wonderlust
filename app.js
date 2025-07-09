@@ -92,16 +92,13 @@ app.use((req, res, next) => {
   next(err);
 });
 
-// app.use((err, req, res, next) => {
-//   const { statuscode = 500, message = "Something went wrong" } = err;
-//   res.status(statuscode).render("listings/error.ejs", { message });
-// });
+
 app.use((err, req, res, next) => {
   const { statusCode = 500, message = "Something went wrong" } = err;
   res.status(statusCode).render("listings/error.ejs", { statusCode, message });
 });
 
-// Start Server
+
 app.listen(8080, () => {
   console.log(" Server running on http://localhost:8080");
 });

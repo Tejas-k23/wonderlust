@@ -149,9 +149,7 @@ body{
     text-transform: capitalize;
   }
  
-/* Base styles already look good for desktop and large tablets */
 
-/* 🟡 For medium screens (tablets) */
 @media (max-width: 768px) {
   #filters {
     gap: 15px;
