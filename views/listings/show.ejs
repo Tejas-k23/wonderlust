@@ -1,7 +1,78 @@
 <% layout("/layouts/boilarplate") %>
+<style>
+.card-img-top {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 10px; /* optional for smooth corners */
+  max-width: 100%;
+  display: block;
+}
 
+@media (max-width: 768px) {
+  .col-8.offset-3,
+  .col-6.offset-3,
+  .col-3.offset-3,
+  .col-3.offset-1 {
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 1rem;
+  }
+
+  .btns {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .btns .col-3 {
+    margin-bottom: 1rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .show-img {
+    max-height: 300px;
+  }
+
+  .starability-slot label {
+    font-size: 1rem;
+  }
+
+  .card-text {
+    font-size: 0.95rem;
+  }
+}
+
+/* ========== Mobile (576px and below) ========== */
+@media (max-width: 576px) {
+  h3, h4 {
+    font-size: 1.25rem;
+    text-align: center;
+  }
+
+  .card {
+    margin: 0.5rem auto;
+  }
+
+  .show-img {
+    max-height: 250px;
+  }
+
+  .btn-outline-dark,
+  .btn-danger {
+    width: 100%;
+  }
+
+  .form-control,
+  textarea {
+    font-size: 0.9rem;
+  }
+  
+}
+</style>
 <div class="container mt-4">
-  <div class="row mb-3">
+   <div class="row mb-3">
     <div class="col-8 offset-3">
       <h3>Listing Details :</h3>
     </div>
