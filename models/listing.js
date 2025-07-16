@@ -23,7 +23,7 @@ const listingSchema = new Schema({
       type: String,
       default: "default",
     },
-  }, // 🔴 MISSING COMMA WAS HERE
+  }, 
 
   price: Number,
   location: String,
