@@ -1,8 +1,17 @@
 const Listing=require("../models/listing");
 const listings=require("../routes/listing.js");
-module.exports.index=async (req, res) => {
-  const allListings = await Listing.find({});
-  res.render("listings/index.ejs", { allListings });
+module.exports.index = async (req, res) => {
+  const { search } = req.query;
+  let allListings;
+
+  if (search) {
+    const regex = new RegExp(search, 'i'); 
+    allListings = await Listing.find({ country: regex });
+  } else {
+    allListings = await Listing.find({});
+  }
+
+  res.render("listings/index.ejs", { allListings, search });
 };
 
 module.exports.newlist=(req, res) => {
@@ -15,7 +24,7 @@ module.exports.newlistpost = async (req, res) => {
     const filename = req.file.filename;
 
     const newListing = new Listing(req.body.listing);
-    newListing.owner = req.user._id; // fixed case
+    newListing.owner = req.user._id; 
     newListing.image = { url, filename };
 
     await newListing.save();
