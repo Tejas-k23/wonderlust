@@ -33,12 +33,12 @@
         </div>
 
 
-        <form class="d-flex mx-auto" role="search" style="max-width: 400px; width: 100%;">
-          <input class="form-control me-2" type="search" placeholder="Search Destination.." aria-label="Search">
-          <button class="btn btn-primary d-inline-flex align-items-center" type="submit">
-            <i class="fa-solid fa-magnifying-glass me-2"></i> Search
-          </button>
-        </form>
+      <form class="d-flex mx-auto" role="search" style="max-width: 400px; width: 100%;" action="/listings" method="GET">
+  <input class="form-control me-2" type="search" placeholder="Search Destination.." name="search" value="<%= typeof search !== 'undefined' ? search : '' %>">
+  <button class="btn btn-primary d-inline-flex align-items-center" type="submit">
+    <i class="fa-solid fa-magnifying-glass me-2"></i> Search
+  </button>
+</form>
 
         <div class="navbar-nav ms-auto">
           <a class="nav-link" href="/listings/new">Add New Listing</a>
